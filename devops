@@ -11,10 +11,10 @@ LAB PRGM-1
    git config --local user.name "____"
 -> git add hello.txt
 -> git commit -m "commited"
--> git remote add origin https://.....
+-> git remote add origin "https://....."
    if origin already exist -
     git remote remove origin
-    git remote add origin https://......
+    git remote add origin "https://......"
 -> git push origin main
 -> perform some changes
 -> git clone "https:/..."
@@ -61,12 +61,12 @@ git init
 git config --local user.email "20cse0140@vvce.ac.in"
 git add .
 git commit -m "commited"
-git remote add origin https://...
+git remote add origin "https://..."
     if origin already exist
      git remote remove origin
-     git remote add origin https://......
+     git remote add origin "https://......"
 git push origin master
--> open jenkins(browser - localhost:8080 -> username-admin passwords-(progm files->jenkins->.err file->copy the credentials) - 6d671eb5b35348c6a7462b2b46dd96e3
+-> open jenkins(browser - localhost:8080 -> username-admin passwords-(progm files->jenkins->.err file->copy the credentials) - 77200362a5234caa9a214b167b3b3812
 -> new item
 -> name -> frestyle -> ok
 -> git project -> paste the url of github repo
@@ -142,18 +142,19 @@ LAB PRGM-7
 
 -> Open eclipse
 -> File -> new -> other -> maven ->maven project -> Next -> next -> all catelog -> maven-archetype-quickstart(org) -> next -> both same(readdatafromjson) -> finish
--> readdatafromjson -> right click -> new -> file -> name(student.json) -> finish (get student.json in the list)
-{"firstname" : "Devops",
-"lastname" : "Folder"} - save
+->// in the console - Y //
+readdatafromjson -> right click -> new -> file -> name(student.json) -> finish (get student.json in the list)
+{"firstname" : "puneeth",
+"lastname" : "shaiva"} - save
 -> browser - maven repository
 -> search bar - simple JSON
 -> click on JSON.simple -> 1.1.1 -> copy the code
 -> back to eclipse -> pom.xml -> replace dependency by the copied code -> save
--> readdatafronjson -> src/main -> readdatasort pkg -> right click -> new -> class -> readjson
+-> readdatafronjson -> src/main -> readdatasort pkg -> right click -> new -> class -> readjson.java
 -> paste the code
 code
-
 package readdatafromjson.readdatafromjson;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
@@ -181,7 +182,8 @@ public class readjson {
 LAB PRGM 8
 
 -> Jenkins -> sign in(user-admin, password-prgmfiles->jenkins->.err->copy credentials)
--> manage jenkins -> plug-ins -> available plug-ins -> search(slack)
+-> manage jenkins -> plug-ins -> available plug-ins -> search(slack) ->
+(if not installed -> installed plug-ins -> right top -> install -> available plug-ins -> search(slack))
 -> click on slack -> 2nd link -> type(#devops-demo) -> add jenkins 
 -> copy redentials (step 3)
 -> save settings
@@ -199,35 +201,38 @@ LAB PRGM-9
 -> browser -> selenium download -> click on java -> save -> extract
 -> select browser -> chrome -> documentation
 -> older releases -> downloads
--> settings -> help -> abt google chrome -> version (view)
--> chrome for testing availability -> stable(tick) 
 -> chromedriver win64 -> copy and paste the link in new tab -> save -> extract
 
 open eclipse 
--> File -> new -> java project -> name ->use default jre -> finish
+
+-> File -> new -> other -> Maven -> Maven Project -> next -> next -> maven-archetype-quickstart (select org) -> name for id's (selenium)
+
 -> selenium -> right click -> build path -> configure build path -> lib -> module path -> add external jars -> selenium (select all except lib) -> open ->apply and close
+
 -> again right click -> build path -> configure build path -> modulepath -> lib -> select all -> open -> apply and close
--> selenium -> src -> right click -> new -> class -> test1 -> finish
+
+-> selenium -> src -> right click -> new -> class -> Launchchrome -> finish
 -> copy paste the code
 
-package selenium;
+
+package selenium.selenium;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class test1 {
+public class Chromelauncher {
+
 	public static void main(String[] args) throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\wwwpr\\Downloads\\chromedriver-win64");
-		test1 driver = new test1();
-		driver.manage().window().maximize();
-		driver.get("http://www.vvce.ac.in/");
-		//Thread.sleep(100);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.findElement(By.xpath("//span[text()='x'][1]")).click();
-//		System.out.println(driver.getTitle());
-		}
+		// TODO Auto-generated method stub
+      System.setProperty("webdriver.chrome.driver","C:\\Users\\wwwpr\\Downloads\\chromedriver-win64\\chromedriver.exe");
+      ChromeDriver driver = new ChromeDriver();
+      driver.manage().window().maximize();
+      driver.get("http://www.vvce.ac.in/");
+      //Thread.sleep(100);
+      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      driver.findElement(By.xpath("//span[text()='×'][1]")).click();
+      //System.out.println(driver.getTitle());
 	}
 }
-
-
